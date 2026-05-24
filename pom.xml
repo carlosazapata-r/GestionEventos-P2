@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.proyecto.gestioneventosp2/com.proyecto.gestioneventosp2.HelloApplication
+                            <mainClass>com.proyecto.gestioneventosp2/edu.pgii.eventos.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
