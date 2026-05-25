@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml">
+    <center>
+        <VBox alignment="CENTER" spacing="16">
+            <padding><Insets top="32" right="32" bottom="32" left="32"/></padding>
+            <Label text="Gestion de eventos y venta de entradas" styleClass="title"/>
+            <VBox spacing="12" styleClass="panel" maxWidth="430">
+                <Label text="Iniciar sesion" styleClass="section-title"/>
+                <GridPane hgap="10" vgap="10">
+                    <Label text="Correo" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="campoCorreo" promptText="Correo" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <Label text="Clave" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <PasswordField fx:id="campoClave" promptText="Clave" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    <Label text="Nombre" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="campoNombre" promptText="Solo para registro" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    <Label text="Telefono" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextField fx:id="campoTelefono" promptText="Solo para registro" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    <HBox spacing="8" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                        <Button text="Iniciar sesion" onAction="#iniciarSesion" styleClass="primary"/>
+                        <Button text="Registrar usuario" onAction="#registrarUsuario"/>
+                    </HBox>
+                </GridPane>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
