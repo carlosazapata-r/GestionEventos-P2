@@ -1,6 +1,7 @@
 package edu.pgii.eventos.patterns.creational;
 
 import edu.pgii.eventos.model.Enumeraciones.ReportFormat;
+import edu.pgii.eventos.service.ExportadorCsvReporte;
 import edu.pgii.eventos.service.ExportadorReporte;
 import edu.pgii.eventos.service.ExportadorPdfSimple;
 
