@@ -25,25 +25,25 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="raiz" xmlns:fx="http://javafx.com/fxml">
+<BorderPane fx:id="raiz" xmlns:fx="http://javafx.com/fxml" styleClass="main-root">
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="16" styleClass="toolbar">
-            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
-            <Label text="Gestion de eventos y venta de entradas" styleClass="title"/>
+        <HBox alignment="CENTER_LEFT" spacing="16" styleClass="toolbar, app-toolbar">
+            <padding><Insets top="14" right="18" bottom="14" left="18"/></padding>
+            <Label text="Gestion de eventos y venta de entradas" styleClass="title, app-title"/>
             <Region HBox.hgrow="ALWAYS"/>
-            <Label fx:id="etiquetaSesion" text="Sin sesion"/>
-            <Button text="Cerrar sesion" onAction="#cerrarSesion"/>
+            <Label fx:id="etiquetaSesion" text="Sin sesion" styleClass="session-pill"/>
+            <Button text="Cerrar sesion" onAction="#cerrarSesion" styleClass="ghost-button"/>
         </HBox>
     </top>
     <center>
-        <TabPane fx:id="pestanas">
+        <TabPane fx:id="pestanas" styleClass="main-tabs">
             <tabs>
                 <Tab text="Eventos y compra" closable="false">
                     <content>
-                        <BorderPane>
-                            <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                        <BorderPane styleClass="main-content">
+                            <padding><Insets top="18" right="18" bottom="18" left="18"/></padding>
                             <top>
-                                <HBox spacing="8">
+                                <HBox spacing="10" styleClass="filter-bar">
                                     <TextField fx:id="filtroCiudad" promptText="Ciudad"/>
                                     <TextField fx:id="filtroCategoria" promptText="Categoria"/>
                                     <DatePicker fx:id="filtroFecha"/>
@@ -64,10 +64,10 @@
                                 </TableView>
                             </center>
                             <right>
-                                <ScrollPane fitToWidth="true" prefWidth="460" hbarPolicy="NEVER">
-                                    <BorderPane.margin><Insets left="12"/></BorderPane.margin>
+                                <ScrollPane fitToWidth="true" prefWidth="470" hbarPolicy="NEVER" styleClass="transparent-scroll">
+                                    <BorderPane.margin><Insets left="14"/></BorderPane.margin>
                                     <content>
-                                        <VBox spacing="10" styleClass="panel">
+                                        <VBox spacing="12" styleClass="panel, purchase-panel">
                                             <Label text="Detalle, seleccion y servicios" styleClass="section-title"/>
                                             <TextArea fx:id="areaDetalleEvento" editable="false" prefRowCount="7"/>
                                             <Label text="Zona"/>
@@ -104,8 +104,8 @@
                 </Tab>
                 <Tab text="Historial y reportes" closable="false">
                     <content>
-                        <BorderPane>
-                            <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                        <BorderPane styleClass="main-content">
+                            <padding><Insets top="18" right="18" bottom="18" left="18"/></padding>
                             <top>
                                 <VBox spacing="8" styleClass="panel">
                                     <Label text="Compras creadas" styleClass="section-title"/>
@@ -140,79 +140,79 @@
                 </Tab>
                 <Tab fx:id="pestanaAdmin" text="Administracion" closable="false">
                     <content>
-                        <BorderPane>
-                            <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                        <BorderPane styleClass="main-content">
+                            <padding><Insets top="18" right="18" bottom="18" left="18"/></padding>
                             <center>
-                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
+                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="transparent-scroll">
                                     <content>
                                         <VBox spacing="12">
                                             <VBox spacing="10" styleClass="panel">
                                                 <Label text="Usuarios" styleClass="section-title"/>
                                                 <TableView fx:id="tablaUsuarios" prefHeight="260">
-                                                    <columns>
-                                                        <TableColumn fx:id="colUsuarioId" text="Id" prefWidth="130"/>
-                                                        <TableColumn fx:id="colUsuarioNombre" text="Nombre" prefWidth="220"/>
-                                                        <TableColumn fx:id="colUsuarioCorreo" text="Correo" prefWidth="210"/>
-                                                        <TableColumn fx:id="colUsuarioTelefono" text="Telefono" prefWidth="130"/>
-                                                        <TableColumn fx:id="colUsuarioRol" text="Rol" prefWidth="90"/>
-                                                    </columns>
+                                            <columns>
+                                                <TableColumn fx:id="colUsuarioId" text="Id" prefWidth="130"/>
+                                                <TableColumn fx:id="colUsuarioNombre" text="Nombre" prefWidth="220"/>
+                                                <TableColumn fx:id="colUsuarioCorreo" text="Correo" prefWidth="210"/>
+                                                <TableColumn fx:id="colUsuarioTelefono" text="Telefono" prefWidth="130"/>
+                                                <TableColumn fx:id="colUsuarioRol" text="Rol" prefWidth="90"/>
+                                            </columns>
                                                 </TableView>
                                             </VBox>
                                             <VBox spacing="10" styleClass="panel">
                                                 <Label text="Crear recinto" styleClass="section-title"/>
                                                 <GridPane hgap="8" vgap="8">
-                                                    <Label text="Nombre" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                                                    <TextField fx:id="campoRecintoNombre" promptText="Nombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                                                    <Label text="Ciudad" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                                                    <TextField fx:id="campoRecintoCiudad" promptText="Ciudad" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-                                                    <Label text="Aforo" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                                                    <TextField fx:id="campoRecintoAforo" promptText="Total" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                                                    <Label text="Secciones" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                                                    <ComboBox fx:id="comboRecintoSecciones" promptText="1, 2 o 3" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
-                                                    <Label text="Precio VIP" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                                                    <TextField fx:id="campoPrecioVip" promptText="Precio" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-                                                    <Label text="Precio Normal" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-                                                    <TextField fx:id="campoPrecioNormal" promptText="Precio" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
-                                                    <Label text="VIP A/B/C" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                                                    <HBox spacing="4" GridPane.rowIndex="3" GridPane.columnIndex="1">
-                                                        <TextField fx:id="campoVipA" promptText="A" prefWidth="48"/>
-                                                        <TextField fx:id="campoVipB" promptText="B" prefWidth="48"/>
-                                                        <TextField fx:id="campoVipC" promptText="C" prefWidth="48"/>
-                                                    </HBox>
-                                                    <Label text="Normal A/B/C" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
-                                                    <HBox spacing="4" GridPane.rowIndex="3" GridPane.columnIndex="3">
-                                                        <TextField fx:id="campoNormalA" promptText="A" prefWidth="48"/>
-                                                        <TextField fx:id="campoNormalB" promptText="B" prefWidth="48"/>
-                                                        <TextField fx:id="campoNormalC" promptText="C" prefWidth="48"/>
-                                                    </HBox>
-                                                    <Button text="Crear recinto" onAction="#crearRecintoAdmin" styleClass="primary" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                                            <Label text="Nombre" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                            <TextField fx:id="campoRecintoNombre" promptText="Nombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                            <Label text="Ciudad" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                                            <TextField fx:id="campoRecintoCiudad" promptText="Ciudad" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                                            <Label text="Aforo" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                            <TextField fx:id="campoRecintoAforo" promptText="Total" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                            <Label text="Secciones" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                                            <ComboBox fx:id="comboRecintoSecciones" promptText="1, 2 o 3" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                                            <Label text="Precio VIP" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                            <TextField fx:id="campoPrecioVip" promptText="Precio" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                            <Label text="Precio Normal" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                                            <TextField fx:id="campoPrecioNormal" promptText="Precio" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+                                            <Label text="VIP A/B/C" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                            <HBox spacing="4" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                                                <TextField fx:id="campoVipA" promptText="A" prefWidth="48"/>
+                                                <TextField fx:id="campoVipB" promptText="B" prefWidth="48"/>
+                                                <TextField fx:id="campoVipC" promptText="C" prefWidth="48"/>
+                                            </HBox>
+                                            <Label text="Normal A/B/C" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                                            <HBox spacing="4" GridPane.rowIndex="3" GridPane.columnIndex="3">
+                                                <TextField fx:id="campoNormalA" promptText="A" prefWidth="48"/>
+                                                <TextField fx:id="campoNormalB" promptText="B" prefWidth="48"/>
+                                                <TextField fx:id="campoNormalC" promptText="C" prefWidth="48"/>
+                                            </HBox>
+                                            <Button text="Crear recinto" onAction="#crearRecintoAdmin" styleClass="primary" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
                                                 </GridPane>
                                             </VBox>
                                             <VBox spacing="10" styleClass="panel">
                                                 <Label text="Eventos, estados y asientos" styleClass="section-title"/>
                                                 <GridPane hgap="8" vgap="8">
-                                                    <Label text="Nombre" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                                                    <TextField fx:id="campoEventoNombre" promptText="Nombre del evento" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                                                    <Label text="Categoria" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                                                    <ComboBox fx:id="comboEventoCategoria" promptText="Categoria" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-                                                    <Label text="Ciudad" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                                                    <TextField fx:id="campoEventoCiudad" promptText="Ciudad" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                                                    <Label text="Fecha" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                                                    <DatePicker fx:id="campoEventoFecha" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
-                                                    <Label text="Recinto" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                                                    <ComboBox fx:id="comboEventoRecinto" promptText="Recinto" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
-                                                    <Label text="Descripcion" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                                                    <TextArea fx:id="campoEventoDescripcion" promptText="Descripcion breve" prefRowCount="2" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
-                                                    <Button text="Crear evento" onAction="#crearEventoAdmin" styleClass="primary" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                                            <Label text="Nombre" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                            <TextField fx:id="campoEventoNombre" promptText="Nombre del evento" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                            <Label text="Categoria" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                                            <ComboBox fx:id="comboEventoCategoria" promptText="Categoria" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                                            <Label text="Ciudad" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                            <TextField fx:id="campoEventoCiudad" promptText="Ciudad" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                            <Label text="Fecha" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                                            <DatePicker fx:id="campoEventoFecha" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                                            <Label text="Recinto" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                            <ComboBox fx:id="comboEventoRecinto" promptText="Recinto" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+                                            <Label text="Descripcion" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                            <TextArea fx:id="campoEventoDescripcion" promptText="Descripcion breve" prefRowCount="2" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+                                            <Button text="Crear evento" onAction="#crearEventoAdmin" styleClass="primary" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
                                                 </GridPane>
                                                 <TableView fx:id="tablaEventosAdmin" prefHeight="260">
-                                                    <columns>
-                                                        <TableColumn fx:id="colAdminEventoNombre" text="Nombre" prefWidth="190"/>
-                                                        <TableColumn fx:id="colAdminEventoCategoria" text="Categoria" prefWidth="110"/>
-                                                        <TableColumn fx:id="colAdminEventoCiudad" text="Ciudad" prefWidth="110"/>
-                                                        <TableColumn fx:id="colAdminEventoFecha" text="Fecha" prefWidth="170"/>
-                                                        <TableColumn fx:id="colAdminEventoEstado" text="Estado" prefWidth="110"/>
-                                                    </columns>
+                                            <columns>
+                                                <TableColumn fx:id="colAdminEventoNombre" text="Nombre" prefWidth="190"/>
+                                                <TableColumn fx:id="colAdminEventoCategoria" text="Categoria" prefWidth="110"/>
+                                                <TableColumn fx:id="colAdminEventoCiudad" text="Ciudad" prefWidth="110"/>
+                                                <TableColumn fx:id="colAdminEventoFecha" text="Fecha" prefWidth="170"/>
+                                                <TableColumn fx:id="colAdminEventoEstado" text="Estado" prefWidth="110"/>
+                                            </columns>
                                                 </TableView>
                                                 <HBox spacing="8">
                                                     <Button fx:id="botonPublicarEvento" text="Publicar" onAction="#publicarEvento"/>
@@ -229,8 +229,8 @@
                 </Tab>
                 <Tab text="Metricas" closable="false">
                     <content>
-                        <BorderPane>
-                            <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                        <BorderPane styleClass="main-content">
+                            <padding><Insets top="18" right="18" bottom="18" left="18"/></padding>
                             <center>
                                 <VBox spacing="12">
                                     <Label fx:id="etiquetaTasaCancelacion" styleClass="section-title"/>
@@ -248,8 +248,8 @@
         </TabPane>
     </center>
     <bottom>
-        <HBox spacing="10">
-            <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+        <HBox spacing="10" styleClass="status-bar">
+            <padding><Insets top="9" right="18" bottom="9" left="18"/></padding>
             <Label text="Notificaciones:"/>
             <Label fx:id="etiquetaNotificaciones" text="Listo"/>
         </HBox>

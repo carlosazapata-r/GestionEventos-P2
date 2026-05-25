@@ -5,33 +5,45 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml">
+<BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="login-root">
     <center>
-        <VBox alignment="CENTER" spacing="16">
-            <padding><Insets top="32" right="32" bottom="32" left="32"/></padding>
-            <Label text="Gestion de eventos y venta de entradas" styleClass="title"/>
-            <VBox spacing="12" styleClass="panel" maxWidth="430">
-                <Label text="Iniciar sesion" styleClass="section-title"/>
-                <GridPane hgap="10" vgap="10">
-                    <Label text="Correo" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                    <TextField fx:id="campoCorreo" promptText="Correo" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                    <Label text="Clave" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                    <PasswordField fx:id="campoClave" promptText="Clave" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                    <Label text="Nombre" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                    <TextField fx:id="campoNombre" promptText="Solo para registro" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-                    <Label text="Telefono" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                    <TextField fx:id="campoTelefono" promptText="Solo para registro" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-                    <HBox spacing="8" GridPane.rowIndex="4" GridPane.columnIndex="1">
-                        <Button text="Iniciar sesion" onAction="#iniciarSesion" styleClass="primary"/>
-                        <Button text="Registrar usuario" onAction="#registrarUsuario"/>
-                    </HBox>
-                </GridPane>
+        <StackPane alignment="CENTER" styleClass="login-shell">
+            <VBox alignment="CENTER" maxWidth="470">
+                <StackPane alignment="TOP_CENTER">
+                    <VBox alignment="CENTER" spacing="16" styleClass="login-card" maxWidth="470">
+                        <padding><Insets top="70" right="42" bottom="38" left="42"/></padding>
+                        <Label text="Gestion de eventos" styleClass="login-title"/>
+                        <Label text="Accede o registra tu cuenta para continuar" styleClass="login-subtitle"/>
+
+                        <VBox spacing="12" maxWidth="340">
+                            <TextField fx:id="campoCorreo" promptText="Correo electronico" styleClass="login-field"/>
+                            <PasswordField fx:id="campoClave" promptText="Clave" styleClass="login-field"/>
+                            <TextField fx:id="campoNombre" promptText="Nombre para registro" styleClass="login-field"/>
+                            <TextField fx:id="campoTelefono" promptText="Telefono para registro" styleClass="login-field"/>
+                        </VBox>
+
+                        <HBox alignment="CENTER" spacing="10">
+                            <Button text="Iniciar sesion" onAction="#iniciarSesion" styleClass="login-primary"/>
+                            <Button text="Registrar" onAction="#registrarUsuario" styleClass="login-secondary"/>
+                        </HBox>
+                    </VBox>
+
+                    <StackPane styleClass="login-logo-wrap" translateY="-58">
+                        <ImageView fitHeight="124" fitWidth="124" preserveRatio="true" smooth="true" styleClass="login-logo">
+                            <image>
+                                <Image url="@/images/logo-eventos-circular.png"/>
+                            </image>
+                        </ImageView>
+                    </StackPane>
+                </StackPane>
             </VBox>
-        </VBox>
+        </StackPane>
     </center>
 </BorderPane>
